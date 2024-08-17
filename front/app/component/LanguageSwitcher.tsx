@@ -1,20 +1,40 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function LanguageSwitcher() {
-  const [language, setLanguage] = useState('kk'); // Начальный язык: 'kk' для казахского, 'ru' для русского
+  const [language, setLanguage] = useState<string | null>(null);
 
-  // Функция для смены языка
+  useEffect(() => {
+    // Этот код выполнится только на клиентской стороне
+    const storedLanguage = localStorage.getItem('language');
+    
+    if (storedLanguage) {
+      setLanguage(storedLanguage); // Устанавливаем язык из localStorage
+    } else {
+      // Устанавливаем язык по умолчанию 'kk' для первых пользователей
+      setLanguage('kk');
+      localStorage.setItem('language', 'kk');
+    }
+  }, []);
+
   const toggleLanguage = () => {
-    setLanguage((prevLang) => (prevLang === 'kk' ? 'ru' : 'kk'));
+    setLanguage((prevLang) => {
+      const newLang = prevLang === 'kk' ? 'ru' : 'kk';
+      localStorage.setItem('language', newLang); // Сохраняем новый язык в localStorage
+      return newLang;
+    });
   };
+
+  // Показываем кнопку только после того, как язык установлен
+  if (!language) {
+    return null; // Или можно добавить loader/spinner
+  }
 
   return (
     <button
       onClick={toggleLanguage}
       className="flex items-center px-3 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 focus:outline-none"
     >
-      {/* Отображение флага в зависимости от выбранного языка */}
       {language === 'kk' ? (
         <>
           <img src="/flag/russian.svg" alt="Русский" className="w-6 h-6 mr-2" />
