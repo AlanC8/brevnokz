@@ -5,7 +5,7 @@ import styles from '../styles/Navigation.module.css';
 const Navigation: React.FC = () => {
   return (
     <nav className={`${styles.navigation} shadow-custom-dark shadow-ml`}>
-      <span className='logo mb-[30px] hidden md:block'>BrevnoKZ</span>
+      <Link href='/'><span className='logo mb-[30px] hidden md:block'>BrevnoKZ</span></Link>
       <ul>
         <li><Link href="/" className='flex items-center gap-1'>
           <img src='icons/home.svg'/>
