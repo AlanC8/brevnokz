@@ -4,7 +4,7 @@ import styles from '../styles/Navigation.module.css';
 
 const Navigation: React.FC = () => {
   return (
-    <nav className={`${styles.navigation} shadow-custom-dark shadow-ml`}>
+    <nav className={`${styles.navigation} shadow-custom-dark shadow-ml z-10`}>
       <Link href='/' className='!no-underline'>
         <span className='flex text-center h-[57px] hidden md:block text-xl !no-underline font-bold text-white'>
           BrevnoKZ
@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
         </li>
         <li>
           <Link
-            href="/about"
+            href="/events"
             className="flex items-center gap-2 p-3 rounded-lg text-white !no-underline hover:bg-[#254D32] active:bg-[#1a3a22] transition-all duration-300 ease-in-out transform hover:scale-105"
           >
             <img src='icons/location.svg' className="w-6 h-6" alt="Location" />

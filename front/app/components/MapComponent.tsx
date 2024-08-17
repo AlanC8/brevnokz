@@ -16,18 +16,20 @@ const MapComponent: React.FC<MapComponentInterface> = ({ style }) => {
   ];
 
   return (
-    <MapContainer
-      center={position}
-      zoom={13}
-      className={style}
-      style={{ height: "200px", width: "100%" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Polyline positions={polyline} pathOptions={{ color: "green" }} />
-    </MapContainer>
+    <div className="relative" style={{ zIndex: 0 }}>
+      <MapContainer
+        center={position}
+        zoom={13}
+        className={style}
+        style={{ height: "200px", width: "100%" }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Polyline positions={polyline} pathOptions={{ color: "green" }} />
+      </MapContainer>
+    </div>
   );
 };
 
