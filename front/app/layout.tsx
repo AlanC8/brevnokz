@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navigation from "./component/Navigation";
+import Header from "./component/Header";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+     <Head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet" />
+     </Head>
+     <body className={`${inter.className} bg-white text-black`} >
+     <div className="app-container w-full min-h-screen">
+        <Navigation />
+        <main className="content">
+          <Header/>
+          {children}
+        </main>
+      </div>
+     </body>
     </html>
   );
 }
