@@ -11,10 +11,18 @@ export default function Component() {
     <div className="p-4 max-w-sm mx-auto">
       <div className="space-y-4">
         <div className="flex items-center space-x-4">
-          <Avatar>
-            <AvatarImage src="/placeholder-user.jpg" alt="Tree" />
-            <AvatarFallback>🌳</AvatarFallback>
-          </Avatar>
+          <div className="relative inline-block">
+            {/* Аватар */}
+                <Avatar>
+                  <AvatarImage src="/placeholder-user.jpg" alt="Tree" width='80'/>
+                  <AvatarFallback><img src='leaf.png'  width='80'/></AvatarFallback>
+                </Avatar>
+
+                {/* Уровень */}
+                <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    5
+                </div>
+            </div>
           <div>
             <h2 className="text-xl font-bold">Ваша статистика</h2>
             <p className="text-sm">Вы спасли</p>

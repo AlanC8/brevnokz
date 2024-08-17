@@ -1,6 +1,6 @@
 export default function Home() {
     return <div className="flex flex-col justify-center">
-      <div className="title text-center font-bold text-2xl p-5">Лучшие 20 - Алматы</div>
+      <div className="title text-center font-bold text-2xl p-5">🏆Топ 20 - Алматы</div>
       <div className="m-auto flex flex-col gap-3">
         <div className="flex bg-gray-200 rounded-md p-5 gap-7 items-center px-8">
             <div className="relative inline-block">

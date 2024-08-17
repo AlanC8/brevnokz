@@ -22,7 +22,7 @@ const Events = () => {
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Ивенты</h1>
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {eventsData.map((event) => (
           <div key={event.id} className="relative bg-white rounded-lg shadow-lg overflow-hidden">
             <img

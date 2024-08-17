@@ -18,7 +18,7 @@ const Navigation: React.FC = () => {
           >
             <img src='icons/home.svg' className="w-6 h-6" alt="Home" />
             <span className='hidden md:block'>
-              Home
+               Главная
             </span>
           </Link>
         </li>
@@ -29,7 +29,7 @@ const Navigation: React.FC = () => {
           >
             <img src='icons/location.svg' className="w-6 h-6" alt="Location" />
             <span className='hidden md:block'>
-              Location
+              Ивенты
             </span>
           </Link>
         </li>
@@ -40,7 +40,7 @@ const Navigation: React.FC = () => {
           >
             <img src='icons/group.svg' className="w-6 h-6" alt="Group" />
             <span className='hidden md:block'>
-              Group
+              Рейтинг
             </span>
           </Link>
         </li>
@@ -51,7 +51,7 @@ const Navigation: React.FC = () => {
           >
             <img src='icons/person.svg' className="w-6 h-6" alt="Person" />
             <span className='hidden md:block'>
-              Person
+              Статистика
             </span>
           </Link>
         </li>

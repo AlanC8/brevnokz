@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { translations } from '@/translations'; // Импортируйте файл переводов
 
 export default function LanguageSwitcher() {
   const [language, setLanguage] = useState<string | null>(null);
@@ -30,22 +31,15 @@ export default function LanguageSwitcher() {
     return null; // Или можно добавить loader/spinner
   }
 
+  const { language: currentLanguage, flag, label } = translations[language];
+
   return (
     <button
       onClick={toggleLanguage}
       className="flex items-center px-3 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 focus:outline-none"
     >
-      {language === 'kk' ? (
-        <>
-          <img src="/flag/russian.svg" alt="Русский" className="w-6 h-6 mr-2" />
-          <span>Русский</span>
-        </>
-      ) : (
-        <>
-          <img src="/flag/kazakhstan.svg" alt="Қазақ" className="w-6 h-6 mr-2" />
-          <span>Қазақ</span>
-        </>
-      )}
+      <img src={flag} alt={currentLanguage} className="w-6 h-6 mr-2" />
+      <span>{label}</span>
     </button>
   );
 }
