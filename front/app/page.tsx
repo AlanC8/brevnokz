@@ -33,7 +33,7 @@ export default function Home() {
         distance="2,92 км"
         planted="512 шт"
         time="5мин. 25сек."
-      />
+      /> 
     </div>
   );
 }

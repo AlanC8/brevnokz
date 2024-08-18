@@ -1,7 +1,9 @@
 import React from "react";
-import MapComponent from "./MapComponent";
 import { FaUser, FaRoad, FaTree, FaClock } from "react-icons/fa";
 import Image from "next/image";
+import dynamic from 'next/dynamic';
+
+const MapComponent = dynamic(() => import('./MapComponent'), { ssr: false });
 
 interface ReportProps {
   userImage: string;
@@ -28,6 +30,8 @@ const ReportCard: React.FC<ReportProps> = ({
             src={userImage}
             alt="User"
             className="w-16 h-16 rounded-full border-2 border-gray-300 mr-4"
+            width={64} // Укажите ширину
+            height={64} // Укажите высоту
           />
           <div>
             <h3 className="text-xl font-semibold text-gray-700">{userName}</h3>
