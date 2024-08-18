@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -9,6 +10,14 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('');
   const [city, setCity] = useState('');
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const userAgent = window.navigator.userAgent;
+      console.log("User-Agent:", userAgent);
+      // Здесь может быть другой код, который зависит от объекта window
+    }
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

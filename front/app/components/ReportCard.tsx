@@ -1,6 +1,7 @@
 import React from "react";
 import MapComponent from "./MapComponent";
 import { FaUser, FaRoad, FaTree, FaClock } from "react-icons/fa";
+import Image from "next/image";
 
 interface ReportProps {
   userImage: string;
@@ -23,7 +24,7 @@ const ReportCard: React.FC<ReportProps> = ({
     <div className="bg-gray-50 rounded-lg shadow-lg p-6 mb-6">
       <div className="bg-white p-5 rounded-lg shadow-inner">
         <div className="flex items-center mb-5">
-          <img
+          <Image
             src={userImage}
             alt="User"
             className="w-16 h-16 rounded-full border-2 border-gray-300 mr-4"
@@ -34,7 +35,7 @@ const ReportCard: React.FC<ReportProps> = ({
           </div>
         </div>
         <div className="mb-5">
-          <h4 className="text-lg font-bold text-gray-800 mb-2">Название цели</h4>
+          <h4 className="text-lg font-bold text-gray-800 mb-2">Название цели: Топ 10</h4>
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center">
               <FaRoad className="text-gray-500 mr-2" />
@@ -59,7 +60,7 @@ const ReportCard: React.FC<ReportProps> = ({
             </div>
           </div>
         </div>
-        <div className="rounded-lg overflow-hidden border border-gray-300">
+        <div className="rounded-lg overflow-hidden border border-gray-300" style={{ height: '200px' }}>
           <MapComponent />
         </div>
       </div>

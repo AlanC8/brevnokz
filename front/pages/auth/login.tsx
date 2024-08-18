@@ -1,39 +1,39 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
+import apiClient from "@/app/services/Interceptors";
+import { UserService } from "@/app/services/UserService";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Simple client-side validation
     if (!email || !password) {
-      setError('Please enter both email and password');
+      setError("Пожалуйста, введите email и пароль");
       return;
     }
 
-    // Perform authentication logic here
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await UserService.getInstance().login(email, password);
 
-      if (response.ok) {
-        // Handle successful login
-        console.log('Login successful');
+      if (response.status === 200) {
+        console.log("Успешный вход");
+        router.push("/");
+        if (window !== undefined) {
+          localStorage.setItem("access", response.data.accessToken);
+        }
       } else {
-        // Handle login failure
-        setError('Invalid email or password');
+        setError("Неправильный email или пароль");
       }
     } catch (error) {
-      setError('An error occurred during login');
+      setError("Произошла ошибка во время входа");
     }
   };
 
@@ -43,11 +43,18 @@ export default function LoginPage() {
         <div className="text-center text-2xl font-bold text-[#254D32] mb-4">
           BREVNOKZ
         </div>
-        <h1 className="text-xl font-bold text-[#254D32] mb-4 text-center">С возвращением!</h1>
+        <h1 className="text-xl font-bold text-[#254D32] mb-4 text-center">
+          С возвращением!
+        </h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email:
+            </label>
             <input
               type="email"
               id="email"
@@ -58,7 +65,12 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Пароль:</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Пароль:
+            </label>
             <input
               type="password"
               id="password"
@@ -77,8 +89,11 @@ export default function LoginPage() {
         </form>
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600">
-            Нет аккаунта?{' '}
-            <Link href="/auth/register" className="text-[#254D32] font-semibold">
+            Нет аккаунта?{" "}
+            <Link
+              href="/auth/register"
+              className="text-[#254D32] font-semibold"
+            >
               Зарегистрируйтесь
             </Link>
           </p>
