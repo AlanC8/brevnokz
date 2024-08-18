@@ -1,7 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import Image from 'next/image';
 
 // eventsData.ts
 const eventsData: Array<{
@@ -25,17 +24,16 @@ const eventsData: Array<{
       title: "Возможность набрать очки",
     },
   ];
-  
 
 const Events = () => {
     const router = useRouter();
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Ивенты</h1>
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {eventsData.map((event) => (
           <div onClick={() => router.push(`/events/${event.id}`)} key={event.id} className="relative bg-white rounded-lg shadow-lg overflow-hidden">
-            <Image
+            <img
               src={event.imageUrl}
               alt={event.title}
               className="w-full h-auto rounded-lg"

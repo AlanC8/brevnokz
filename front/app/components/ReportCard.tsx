@@ -1,7 +1,6 @@
 import React from "react";
 import { FaUser, FaRoad, FaTree, FaClock } from "react-icons/fa";
-import Image from "next/image";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 const MapComponent = dynamic(() => import('./MapComponent'), { ssr: false });
 
@@ -26,7 +25,7 @@ const ReportCard: React.FC<ReportProps> = ({
     <div className="bg-gray-50 rounded-lg shadow-lg p-6 mb-6">
       <div className="bg-white p-5 rounded-lg shadow-inner">
         <div className="flex items-center mb-5">
-          <Image
+          <img
             src={userImage}
             alt="User"
             className="w-16 h-16 rounded-full border-2 border-gray-300 mr-4"

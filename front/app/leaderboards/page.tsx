@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
 import apiClient from "../services/Interceptors";
-import Image from "next/image";
 
 // Определяем интерфейс для пользователя
 export interface User {
@@ -40,7 +39,7 @@ export default function LeaderBoard() {
                 {users.map((user) => (
                     <div key={user._id} className="flex mx-4 bg-white rounded-lg shadow-lg p-4 items-center">
                         <div className="relative">
-                            <Image
+                            <img
                                 src={'/avatar.png'}
                                 alt="Avatar"
                                 className="w-14 h-14 rounded-full"
